@@ -1,0 +1,88 @@
+🚀 Otimização de Performance Web com Lighthouse
+📖 Descrição do projeto
+
+Este projeto foi desenvolvido durante o curso com o objetivo de aplicar técnicas de otimização de performance em uma aplicação front-end.
+
+A proposta da atividade foi identificar gargalos de desempenho utilizando ferramentas de análise e aplicar melhorias práticas para tornar a aplicação mais rápida, eficiente e com melhor experiência para o usuário.
+
+🔍 Análise inicial (ANTES)
+
+A análise inicial foi realizada utilizando o Lighthouse, através do Chrome DevTools.
+
+Foram identificados os seguintes gargalos de performance:
+
+Imagens com tamanho elevado, impactando o tempo de carregamento
+Código JavaScript não utilizado
+Ausência de carregamento otimizado de imagens (lazy loading)
+Arquivos CSS e JS não minificados
+Possíveis bloqueios na renderização inicial da página
+
+⚡ Melhorias aplicadas
+
+Com base na análise inicial, foram implementadas as seguintes otimizações:
+
+🖼️ Imagens
+Compressão das imagens para reduzir o tamanho
+Conversão para formatos mais eficientes (como WebP)
+Aplicação do atributo loading="lazy" para carregamento sob demanda
+
+💻 Código
+Remoção de trechos de código não utilizados
+Limpeza de imports desnecessários
+Organização geral do código
+
+📦 Arquivos
+Minificação de arquivos CSS e JavaScript
+Redução de requisições desnecessárias
+
+📊 Comparativo (Antes vs Depois)
+
+🔴 Antes
+
+![Antes](./img/antes-1.jpeg)
+![Antes](./img/antes-2.jpeg)
+![Antes](./img/antes-3.jpeg)
+![Antes](./img/antes-4.jpeg)
+
+
+🟢 Depois
+
+![Depois](./img/depois-1.jpeg)
+![Depois](./img/depois-2.jpeg)
+![Depois](./img/depois-3.jpeg)
+![Depois](./img/depois-4.jpeg)
+
+
+📈 Resultados
+
+Após as otimizações, foi possível observar melhorias significativas nas métricas de performance:
+
+Performance: 60 → 90+
+Redução no tempo de carregamento da página
+Melhor tempo de renderização do conteúdo principal
+Diminuição do bloqueio causado por JavaScript
+
+Essas melhorias impactaram diretamente na experiência do usuário, tornando a navegação mais rápida e fluida.
+
+🧠 Principais melhorias de impacto
+
+As ações que trouxeram maior impacto foram:
+
+Otimização e compressão de imagens
+Remoção de código desnecessário
+Implementação de lazy loading
+
+Essas mudanças reduziram significativamente o tempo de carregamento inicial e melhoraram a performance geral da aplicação.
+
+✅ Conclusão
+
+A atividade demonstrou na prática como pequenas otimizações podem gerar grandes ganhos de performance.
+
+O uso de ferramentas como o Lighthouse foi essencial para identificar problemas e validar as melhorias aplicadas, garantindo uma aplicação mais eficiente e alinhada com boas práticas de desenvolvimento front-end.
+
+🛠️ Ferramentas utilizadas
+
+Chrome DevTools (Lighthouse)
+Técnicas de otimização de imagens com o site https://squoosh.app/
+Minificação de codigo com o site https://www.minifier.org/
+Boas práticas de desenvolvimento front-end

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaori Paper</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" href="capa-2.webp" as="image">
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo-area">
+<img src="papelaria-kaori.webp" class="logo-img" loading="lazy">
+<span class="logo-text">Kaori Paper</span>
+</div>
+
+<nav class="menu">
+<a href="index.html">Home</a>
+<a href="produtos.html">Loja</a>
+<a href="contato.html">Contato</a>
+</nav>
+
+</header>
+
+<!-- ⭐ SLIDER AQUI -->
+<section class="slider">
+
+<div class="slides">
+
+<img src="capa-2.webp" class="slide ativo" fetchpriority="high">
+<img src="capa-1.webp" class="slide" loading="lazy">
+<img src="capa-3.webp" class="slide" loading="lazy">
+
+</div>
+
+</section>
+
+<!-- ⭐ NOVIDADES -->
+<section class="novidades">
+
+<h2>✨ Novidades</h2>
+
+<div id="gridHome" class="grid-home"></div>
+<script type="module" src="js/home.js"></script>
+
+</section>
+
+<section class="banner">
+<h2>🌸 Kaori Paper 🌸</h2>
+<p>Criatividade, estilo e exclusividade em cada detalhe.</p>
+<a href="produtos.html" class="btn-loja">Comprar agora</a>
+</section>
+
+</main>
+
+<footer class="rodape">
+Kaori Paper © 2026
+</footer>
+
+<div class="fav-float" onclick="abrirFav()">❤️</div>
+
+<div id="painelFav" class="painel-fav">
+
+<button class="fechar-fav" onclick="fecharFav()">✕</button>
+
+<h3>Seus favoritos ❤️</h3>
+
+<div id="listaFav"></div>
+
+</div>
+
+<a href="https://wa.me/5562991008898" class="wpp-float">💬</a>
+<a href="carrinho.html" class="cart-float">🛒</a>
+
+<script src="js/favoritos-global.js" defer></script>
+<script src="js/slider.js" defer></script>
+
+</body>
+</html>
+
+</section>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Admin Kaori</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="admin">
+
+<h2>🌸 Cadastrar Produto</h2>
+
+<input id="nome" placeholder="Nome do produto">
+
+<input id="preco" type="number" placeholder="Preço">
+
+<select id="categoria">
+<option value="adesivos">Adesivos</option>
+<option value="papelaria">Papelaria</option>
+<option value="eventos">Eventos</option>
+</select>
+
+<textarea id="descricao" placeholder="Descrição"></textarea>
+
+<input type="file" id="imagem" multiple>
+
+
+<button onclick="salvar()">💾 Salvar Produto</button>
+<h3>📦 Produtos cadastrados</h3>
+<div id="previewLista"></div>
+<div id="listaAdmin"></div>
+
+</section>
+
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrinho - Kaori</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo-area">
+<img src="papelaria-kaori.png" class="logo-img">
+<span class="logo-text">Kaori Paper</span>
+</div>
+
+<nav class="menu">
+<a href="index.html">Home</a>
+<a href="produtos.html">Loja</a>
+<a href="favoritos.html">Favoritos</a>
+<a href="contato.html">Contato</a>
+</nav>
+
+</header>
+
+<section class="carrinho-page">
+<a href="carrinho.html" class="cart-float">
+🛒 <span id="cart-count">0</span>
+</a>
+
+<h2>🛒 Seu Carrinho</h2>
+
+<div id="listaCarrinho"></div>
+
+<div class="box-carrinho">
+
+<h3 id="totalCarrinho">Total: R$ 0</h3>
+
+<div class="checkout-box">
+
+  <input id="nomeCliente" placeholder="👤 Seu nome completo">
+
+  <input id="enderecoCliente" placeholder="📍 Endereço completo">
+
+  <input id="cupom" placeholder="🎟 Cupom de desconto">
+  <button onclick="aplicarCupom()" class="btn-checkout">Aplicar</button>
+
+  <input id="cep" placeholder="📦 Digite seu CEP">
+  <button onclick="calcularFrete()" class="btn-checkout">Calcular Frete</button>
+
+  <p id="prazoEntrega"></p>
+
+  <!-- PAGAMENTO -->
+  <select id="pagamento" class="select-pagamento">
+    <option value="">💳 Escolha forma de pagamento</option>
+    <option value="Pix">Pix</option>
+    <option value="Cartão">Cartão</option>
+    <option value="Dinheiro">Dinheiro</option>
+  </select>
+
+  <!-- PIX -->
+  <div id="pixBox" style="display:none;">
+    <img id="qrPix">
+    <button onclick="copiarPix()" class="btn-checkout">Copiar chave Pix</button>
+  </div>
+
+  <button onclick="finalizarPedido()" class="btn-finalizar">
+    Finalizar Pedido 💬
+  </button>
+
+</div>
+
+</section>
+
+<footer class="rodape">
+Kaori Paper © 2026
+</footer>
+
+<script src="js/carrinho.js"></script>
+<script src="js/favoritos-global.js"></script>
+
+<a href="https://wa.me/5562991008898" class="wpp-float">💬</a>
+
+</body>
+</html>

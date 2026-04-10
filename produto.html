@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Produto</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" href="papelaria-kaori.webp" as="image">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo-area">
+<img src="papelaria-kaori.webp" class="logo-img" loading="lazy">
+<span class="logo-text">Kaori Paper</span>
+</div>
+
+<nav class="menu">
+<a href="index.html">Home</a>
+<a href="produtos.html">Loja</a>
+<a href="contato.html">Contato</a>
+</nav>
+
+</header>
+
+<section class="produto-page">
+
+<div class="produto-container">
+
+<div class="produto-grid">
+
+<!-- IMAGEM -->
+<div class="col-img">
+
+<img id="imgProduto" class="zoom-img">
+<img id="imgPrincipal" class="img-produto-page">
+<div id="miniaturas" class="miniaturas"></div>
+
+</div>
+
+<!-- INFO -->
+<div class="col-info">
+
+<h1 id="nomeProduto"></h1>
+
+<p id="precoProduto" class="preco-produto"></p>
+
+<p id="descricaoProduto" class="descricao"></p>
+
+<div class="box-compra">
+
+<input type="number" id="quantidade" value="1" min="1">
+
+<button class="btn-comprar" onclick="addCarrinhoProduto()">
+  🛒 Adicionar ao carrinho
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="fav-float" onclick="abrirFav()">❤️</div>
+
+<div id="painelFav" class="painel-fav">
+<h3>Seus favoritos ❤️</h3>
+<div id="listaFav"></div>
+</div>
+
+<a href="https://wa.me/5562991008898" class="wpp-float">💬</a>
+<a href="carrinho.html" class="cart-float">🛒</a>
+
+<footer class="rodape">
+<h3>Kaori Paper 🌸</h3>
+<p>Papelaria criativa e personalizada</p>
+</footer>
+
+
+<div id="galeria" style="display:flex;gap:10px;margin-top:10px"></div>
+
+<script src="js/produto.js"></script>
+<script src="js/favoritos-global.js"></script>
+
+
+</body>
+</html>

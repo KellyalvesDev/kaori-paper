@@ -1,0 +1,33 @@
+[
+{
+"nome":"Kit adesivo variado",
+"preco":17.90,
+"categoria":"adesivo",
+"imagens":[
+"img/adesivo-1.jpg",
+"img/adesivo-2.jpg",
+"img/adesivo-3.jpg",
+"img/adesivo-4.jpg"
+]
+},
+
+{
+"nome":"Caderno Studios Ghibli - Totoro",
+"preco":24.90,
+"categoria":"papelaria",
+"imagens":[
+"img/totoro-1.jpg"
+]
+},
+
+{
+"nome":"Lembrancinha personalizada - Páscoa",
+"preco":5.90,
+"categoria":"eventos",
+"imagens":[
+"img/pascoa-1.jpg",
+"img/pascoa-2.jpg",
+"img/pascoa-3.jpg"
+]
+}
+]

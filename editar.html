@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Editar Produto</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="admin">
+
+<h2>✏️ Editar Produto</h2>
+
+<input id="nome">
+<input id="preco" type="number">
+
+<select id="categoria">
+<option value="anime">Anime</option>
+<option value="papelaria">Papelaria</option>
+<option value="eventos">Eventos</option>
+</select>
+
+<textarea id="descricao"></textarea>
+
+<input type="file" id="imagem" multiple>
+
+<div id="previewLista"></div>
+
+<button onclick="atualizar()">💾 Atualizar Produto</button>
+
+</section>
+
+<script type="module" src="js/editar.js"></script>
+
+</body>
+</html>
