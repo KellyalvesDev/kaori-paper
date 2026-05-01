@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite — Isabela</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;
+  background:linear-gradient(180deg,#0a2a5e 0%,#0d3d7a 30%,#0e5c9e 60%,#1a7fbf 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Lato',sans-serif;
+  overflow-x:hidden;
+  position:relative;
+}
+canvas.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.bolha{
+  position:fixed;border-radius:50%;
+  background:rgba(255,255,255,0.06);
+  pointer-events:none;z-index:1;
+  animation:subir linear infinite;
+}
+@keyframes subir{
+  0%{transform:translateY(0) scale(1);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:0.5;}
+  100%{transform:translateY(-100vh) scale(1.3);opacity:0;}
+}
+.estrela{
+  position:fixed;pointer-events:none;z-index:1;
+  color:#ffd700;font-size:12px;
+  animation:brilhar ease-in-out infinite;
+}
+@keyframes brilhar{0%,100%{opacity:0.2;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+.wrapper{position:relative;z-index:2;max-width:400px;width:90%;padding:1.5rem 0;}
+.convite{
+  background:linear-gradient(175deg,rgba(8,30,80,0.97) 0%,rgba(10,42,100,0.97) 100%);
+  border:1px solid rgba(255,200,60,0.4);
+  border-radius:4px;
+  overflow:hidden;
+  text-align:center;
+  box-shadow:0 0 40px rgba(0,100,200,0.3),0 0 80px rgba(0,50,150,0.2),inset 0 0 60px rgba(0,0,50,0.3);
+  opacity:0;
+  animation:surgir 1.5s cubic-bezier(.16,1,.3,1) 0.5s forwards;
+}
+@keyframes surgir{from{opacity:0;transform:translateY(50px) scale(0.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.faixa-topo{
+  height:6px;
+  background:linear-gradient(90deg,#c8860a,#ffd700,#f0a500,#ffd700,#c8860a);
+  background-size:200% 100%;
+  animation:brilhoOuro 3s ease infinite;
+}
+@keyframes brilhoOuro{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
+.onda-svg{display:block;width:100%;margin-bottom:-2px;}
+.corpo{padding:0.5rem 2.5rem 2rem;}
+.oceano-label{
+  font-size:9px;letter-spacing:5px;text-transform:uppercase;
+  color:#7ecbe8;font-weight:300;
+  margin-bottom:1rem;
+  opacity:0;animation:aparecer 1s ease 1.2s forwards;
+}
+@keyframes aparecer{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.divisor-ouro{
+  display:flex;align-items:center;gap:10px;margin:0.8rem 0;
+  opacity:0;animation:aparecer 1s ease 1.4s forwards;
+}
+.divisor-ouro::before,.divisor-ouro::after{
+  content:'';flex:1;height:0.5px;
+  background:linear-gradient(90deg,transparent,#ffd700,transparent);
+}
+.divisor-ouro span{color:#ffd700;font-size:12px;}
+.nome{
+  font-family:'Playfair Display',serif;
+  font-size:50px;font-weight:400;
+  color:#ffd700;line-height:1;
+  margin:0.3rem 0;
+  text-shadow:0 0 30px rgba(255,215,0,0.4);
+  opacity:0;animation:aparecer 1s ease 1.6s forwards;
+}
+.subtitulo{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:16px;font-weight:300;
+  color:#7ecbe8;margin-bottom:0.8rem;
+  opacity:0;animation:aparecer 1s ease 1.8s forwards;
+}
+.ornamento{
+  color:#ffd700;font-size:14px;letter-spacing:6px;
+  margin:0.5rem 0 1rem;
+  opacity:0;animation:aparecer 1s ease 1.9s forwards;
+}
+.info-card{
+  background:rgba(255,255,255,0.05);
+  border:0.5px solid rgba(255,215,0,0.25);
+  border-radius:3px;padding:1.3rem 1.2rem;margin:0.5rem 0 1.2rem;
+  opacity:0;animation:aparecer 1s ease 2s forwards;
+}
+.info-linha{margin:0.6rem 0;}
+.info-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#5aaec8;font-weight:400;}
+.info-valor{font-family:'Playfair Display',serif;font-size:15px;color:#e8f4ff;margin-top:2px;}
+.info-sub{font-size:12px;color:#7ecbe8;}
+.sep{height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.2),transparent);margin:0.7rem 0;}
+.frase{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:14px;font-weight:300;
+  color:#7ecbe8;line-height:1.9;margin:1rem 0;
+  opacity:0;animation:aparecer 1s ease 2.2s forwards;
+}
+.frase::before,.frase::after{content:'"';color:#ffd700;font-size:16px;}
+.btn{
+  display:inline-block;margin-top:0.8rem;
+  padding:0.85rem 2rem;
+  background:linear-gradient(135deg,#c8860a,#ffd700,#c8860a);
+  background-size:200% 100%;
+  color:#0a1a3e;font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
+  font-family:'Lato',sans-serif;font-weight:700;
+  transition:all 0.4s ease;
+  opacity:0;animation:aparecer 1s ease 2.4s forwards;
+  box-shadow:0 4px 20px rgba(255,200,0,0.2);
+}
+.btn:hover{background-position:100%;box-shadow:0 6px 30px rgba(255,200,0,0.4);transform:translateY(-2px);}
+.rodape{
+  padding:1rem 2rem 1.2rem;font-size:9px;letter-spacing:2px;
+  color:rgba(126,203,232,0.5);
+  border-top:0.5px solid rgba(255,215,0,0.15);
+  opacity:0;animation:aparecer 1s ease 2.6s forwards;
+}
+.btn-musica{
+  position:fixed;bottom:20px;right:20px;z-index:10;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,215,0,0.85);
+  border:none;cursor:pointer;font-size:18px;
+  box-shadow:0 4px 16px rgba(255,200,0,0.3);
+  transition:all 0.3s ease;
+  display:flex;align-items:center;justify-content:center;
+}
+.btn-musica:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<canvas class="bg" id="bgCanvas"></canvas>
+
+<audio id="musica" loop>
+  <source src="../audio/nome-da-musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="wrapper">
+  <div class="convite">
+    <div class="faixa-topo"></div>
+
+    <svg class="onda-svg" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="ondaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1a7fbf;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#0a2a5e;stop-opacity:0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,30 C50,55 100,5 150,30 C200,55 250,5 300,30 C350,55 380,15 400,25 L400,0 L0,0 Z" fill="url(#ondaGrad)"/>
+      <path d="M0,40 C60,60 120,15 180,40 C240,60 300,15 360,40 L400,35 L400,0 L0,0 Z" fill="rgba(26,127,191,0.4)"/>
+    </svg>
+
+    <div class="corpo">
+      <div class="oceano-label">✦ O Oceano te convida ✦</div>
+      <div class="divisor-ouro"><span>✦</span></div>
+      <!-- Troque o nome abaixo -->
+      <div class="nome">Isabela</div>
+      <!-- Troque a idade/descrição abaixo -->
+      <div class="subtitulo">navega pelos seus 5 aninhos</div>
+      <div class="ornamento">· · ✦ · ·</div>
+      <div class="info-card">
+        <div class="info-linha">
+          <div class="info-label">Data</div>
+          <!-- Troque a data abaixo -->
+          <div class="info-valor">22 de março de 2026</div>
+        </div>
+        <div class="sep"></div>
+        <div class="info-linha">
+          <div class="info-label">Horário</div>
+          <!-- Troque o horário abaixo -->
+          <div class="info-valor">14h às 18h</div>
+        </div>
+        <div class="sep"></div>
+        <div class="info-linha">
+          <div class="info-label">Local</div>
+          <!-- Troque o local abaixo -->
+          <div class="info-valor">Espaço Oceania<br><span class="info-sub">Av. das Palmeiras, 456 — Goiânia</span></div>
+        </div>
+      </div>
+      <!-- Troque a frase abaixo -->
+      <div class="frase">Siga o brilho do oceano e venha celebrar com a gente esta aventura especial.</div>
+      <!-- Troque o número do WhatsApp: 55 + DDD + número -->
+      <a class="btn" href="https://wa.me/5562999999999" target="_blank">🐚 Confirmar presença</a>
+    </div>
+    <div class="rodape">Kaori Paper · kaoripaper.netlify.app</div>
+  </div>
+</div>
+
+<button class="btn-musica" id="btnMusica" onclick="toggleMusica()">🎵</button>
+
+<script>
+const canvas=document.getElementById('bgCanvas');
+const ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+
+const ondas=[];
+for(let i=0;i<5;i++){
+  ondas.push({y:H*0.6+i*40,amp:20+i*8,freq:0.008-i*0.001,speed:0.003+i*0.001,off:Math.random()*Math.PI*2,alpha:0.06-i*0.008});
+}
+let tick=0;
+function drawBg(){
+  ctx.clearRect(0,0,W,H);
+  ondas.forEach(o=>{
+    ctx.beginPath();ctx.moveTo(0,o.y);
+    for(let x=0;x<=W;x+=4){
+      const y=o.y+Math.sin(x*o.freq+tick*o.speed+o.off)*o.amp;
+      ctx.lineTo(x,y);
+    }
+    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+    ctx.fillStyle=`rgba(30,120,200,${o.alpha})`;ctx.fill();
+  });
+  tick++;requestAnimationFrame(drawBg);
+}
+drawBg();
+
+for(let i=0;i<12;i++){
+  const b=document.createElement('div');b.className='bolha';
+  const s=10+Math.random()*30;
+  b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;bottom:-${s}px;animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*8}s;`;
+  document.body.appendChild(b);
+}
+const emojisEstrela=['✦','★','✧'];
+for(let i=0;i<15;i++){
+  const e=document.createElement('div');e.className='estrela';
+  e.textContent=emojisEstrela[Math.floor(Math.random()*emojisEstrela.length)];
+  e.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*50}vh;animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()*3}s;font-size:${8+Math.random()*10}px;`;
+  document.body.appendChild(e);
+}
+
+function toggleMusica(){
+  const btn = document.getElementById('btnMusica');
+  const audio = document.getElementById('musica');
+  if(audio.paused){
+    audio.play();
+    btn.textContent = '🔇';
+  } else {
+    audio.pause();
+    btn.textContent = '🎵';
+  }
+}
+// }
+
+let audioCtx=null,tocando=false,gainNode=null,oscs=[];
+function toggleMusica(){
+  const btn=document.getElementById('btnMusica');
+  if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  if(tocando){
+    gainNode.gain.setTargetAtTime(0,audioCtx.currentTime,0.5);
+    setTimeout(()=>oscs.forEach(o=>{try{o.stop()}catch(e){}}),1200);
+    oscs=[];tocando=false;btn.textContent='🎵';
+  } else {
+    gainNode=audioCtx.createGain();
+    gainNode.gain.setValueAtTime(0,audioCtx.currentTime);
+    gainNode.gain.setTargetAtTime(0.04,audioCtx.currentTime,1.5);
+    gainNode.connect(audioCtx.destination);
+    const notasPolinesias=[293.7,329.6,369.9,440,493.9,554.4,659.3,740];
+    const o1=audioCtx.createOscillator();
+    o1.type='sine';
+    let t=audioCtx.currentTime;
+    notasPolinesias.forEach((n,i)=>{o1.frequency.setValueAtTime(n,t+i*0.8);});
+    o1.connect(gainNode);o1.start();
+    const o2=audioCtx.createOscillator();
+    o2.type='triangle';o2.frequency.value=146.8;
+    const g2=audioCtx.createGain();g2.gain.value=0.4;
+    o2.connect(g2);g2.connect(gainNode);o2.start();
+    oscs=[o1,o2];tocando=true;btn.textContent='🔇';
+  }
+}
+</script>
+</body>
+</html>
